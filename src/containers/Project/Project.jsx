@@ -1,14 +1,13 @@
 import React from 'react'
-import Task from '../../components/task'
 import ProjectMenu from './ProjectMenu'
+import TaskContainer from './TaskContainer'
 
-const Project = ({ data, projectList }) => {
+const Project = ({ data, projects }) => {
     const tasks = data.tasks
-    console.log(projectList);
   return (
     <div className='w-9/12 flex h-full'>
         <div className='w-1/4'>
-            <ProjectMenu />
+            <ProjectMenu projectList = {projects} />
         </div>
         <div className='w-3/4 h-full'>
             <div className='h-1/6 font-poppins p-5 pb-0 flex flex-col justify-end'>
@@ -38,58 +37,10 @@ const Project = ({ data, projectList }) => {
                 </div>
 
                 {/* Tasks */}
-                    
                 <div className='h-[90%] px-3 w-full flex'>
-                            <div className='p-3 h-full w-1/3 flex'>
-                                <div className='bg-slate-100 w-full'>
-                                    <div className='font-medium flex justify-between p-1 pt-0 border-b-2'>
-                                        <h5 className='text-lg'>TO DO</h5>
-                                        <p className='bg-indigo-500 text-white px-4 rounded-md'>2</p>
-                                    </div>
-                                    <div>
-                                        <button className='w-full my-2 bg-white p-2 rounded-sm border-[1px] border-slate-200 hover:bg-indigo-500 hover:text-white transition'>+ Add Task</button>
-                                    </div>
-                                        <ul className='mt-2 flex flex-col gap-2'>
-                                            {tasks[0].map((task, index) => (
-                                                <div>
-                                                    <Task data={task} />
-                                                </div>
-                                            ))}
-                                        </ul>
-                                </div>
-                            </div>
-                                <div className='p-3 h-full w-1/3 flex'>
-                                    <div className='bg-slate-100 w-full'>
-                                        <div className='font-medium flex justify-between p-1 pt-0 border-b-2'>
-                                            <h5 className='text-lg'>IN PROGRESS</h5>
-                                            <p className='bg-indigo-500 text-white px-4 rounded-md'>2</p>
-                                        </div>
-                                        <div>
-                                            <button className='w-full my-2 bg-white p-2 rounded-sm border-[1px] border-slate-200 hover:bg-indigo-500 hover:text-white transition'>+ Add Task</button>
-                                        </div>
-                                        <ul className='mt-2 flex flex-col gap-2'>
-                                            {tasks[1].map((task) => (
-                                                <li><Task data={task} /></li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className='p-3 h-full w-1/3 flex'>
-                                    <div className='bg-slate-100 w-full'>
-                                        <div className='font-medium flex justify-between p-1 pt-0 border-b-2'>
-                                            <h5 className='text-lg'>COMPLETED</h5>
-                                            <p className='bg-indigo-500 text-white px-4 rounded-md'>2</p>
-                                        </div>
-                                        <div>
-                                            <button className='w-full my-2 bg-white p-2 rounded-sm border-[1px] border-slate-200 hover:bg-indigo-500 hover:text-white transition'>+ Add Task</button>
-                                        </div>
-                                        <ul className='mt-2 flex flex-col gap-2'>
-                                            {tasks[2].map((task) => (
-                                                <li><Task data={task} /></li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>     
+                    <TaskContainer section={"TO DO"} tasks={tasks[0]} />
+                    <TaskContainer section={"IN PROGRESS"} tasks={tasks[1]} />
+                    <TaskContainer section={"COMPLETED"} tasks={tasks[2]} />               
                 </div>
             </div>
         </div>
