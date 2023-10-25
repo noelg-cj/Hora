@@ -1,8 +1,8 @@
-<h2>Welcome to Hora!</h2>
+#Welcome to Hora!
 
 Hora is a Project Management desktop application powered by electron js.
 
-##Contribution guide
+## Contribution guide
 - Fork the repository
 - Pull
 - Install the dependencies (npm install)
